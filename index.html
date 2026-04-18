@@ -4150,9 +4150,13 @@ $('.diyalogo').fadeIn(500);
         var originalContent = marquee.html();
         marquee.html(originalContent + originalContent);
 
-        // Вычисляем ширину контента и устанавливаем начальное положение
-        var contentWidth = marquee[0].scrollWidth / 2;
-        marquee.scrollLeft(contentWidth);
+        // Перевіряємо, чи існує елемент і чи він не порожній
+if (marquee && marquee.length > 0 && marquee[0]) {
+    var contentWidth = marquee[0].scrollWidth / 2;
+    marquee.scrollLeft(contentWidth);
+} else {
+    console.warn("Елемент marquee не знайдено на сторінці. Перевірте HTML-розмітку.");
+}
 
         // Запускаем анимацию
         marquee.marquee({
